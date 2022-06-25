@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .text__underline {
+    @apply relative after:absolute after:content-[''] after:h-[2px] after:bottom-[-4px] after:mx-auto after:my-auto after:w-[50%] after:left-0 after:right-0
+        after:bg-green-600 after:transition-all after:duration-300 hover:after:w-[80%];
+  }
+}
