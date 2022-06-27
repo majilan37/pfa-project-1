@@ -1,6 +1,7 @@
 import { XIcon } from "@heroicons/react/outline";
-import { Fade, IconButton, Slide } from "@mui/material";
+import { Button, Fade, IconButton, Slide } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { resetQuantity, setIsOpen } from "../redux/slices/cartSlice";
 import { currencyFormat } from "../utils";
@@ -52,6 +53,14 @@ function Cart() {
               <h2 className="text-2xl font-bold text-end my-4">
                 Total: {currencyFormat(price * quantity)}{" "}
               </h2>
+              <Button
+                component={Link}
+                to="/checkout"
+                className="!capitalize"
+                disableElevation
+                variant="contained">
+                Passer à la caisse
+              </Button>
             </div>
           ) : (
             <div className="">

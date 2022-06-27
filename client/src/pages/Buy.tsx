@@ -1,4 +1,9 @@
-import { ClockIcon, ShieldCheckIcon, TruckIcon } from "@heroicons/react/solid";
+import {
+  ClockIcon,
+  ReceiptRefundIcon,
+  ShieldCheckIcon,
+  TruckIcon,
+} from "@heroicons/react/solid";
 import { Button, Divider, Grid } from "@mui/material";
 import Cart from "../components/Cart";
 import Description from "../components/Description";
@@ -24,7 +29,6 @@ function Buy() {
       <Header />
       <div className="">
         <Product />
-        <Cart />
       </div>
       <Divider
         variant="middle"
@@ -110,7 +114,10 @@ function Buy() {
         />
         <Element Icon={TruckIcon} text={"Livraison <br /> gratuite"} />
         <Element Icon={ShieldCheckIcon} text={"Paiement <br /> sécurisé"} />
-        <Element Icon={TruckIcon} text={"Déclaration <br /> de retour"} />
+        <Element
+          Icon={ReceiptRefundIcon}
+          text={"Déclaration <br /> de retour"}
+        />
       </div>
       <Footer />
     </div>

@@ -24,6 +24,9 @@ function Header() {
             <Link to="/buy">Produit</Link>
           </li>
           <li className="hover:text-gray-700">
+            <Link to="/destination">Destination</Link>
+          </li>
+          <li className="hover:text-gray-700">
             <Link to="/">Services</Link>
           </li>
           <li className="hover:text-gray-700">

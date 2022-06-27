@@ -9,6 +9,12 @@ export function currencyFormat(n: number) {
   return formatter.format(n);
 }
 
+export function simulateReaquest(delay = 0) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
+
 // export function useDidMountEffect(func: () => void, deps: any[]) {
 //   const didMount = useRef(false);
 
