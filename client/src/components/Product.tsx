@@ -164,6 +164,7 @@ function Product() {
           <Divider variant="middle" className="!my-2" />
           <div className="flex items-center justify-around">
             <Rating
+              className="!cursor-pointer"
               name="half-rating-read"
               defaultValue={4.5}
               precision={0.5}
