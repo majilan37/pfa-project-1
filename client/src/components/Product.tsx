@@ -162,9 +162,8 @@ function Product() {
             <ClockIcon className="h-5" /> <span>Livraison sous 15 jours</span>
           </small>
           <Divider variant="middle" className="!my-2" />
-          <div className="flex items-center justify-around">
+          <div className="flex items-center justify-around cursor-pointer">
             <Rating
-              className="!cursor-pointer"
               name="half-rating-read"
               defaultValue={4.5}
               precision={0.5}
