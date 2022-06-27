@@ -1,6 +1,6 @@
 import { LoadingButton } from "@mui/lab";
 import { CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Validator from "../components/Validator";
@@ -43,15 +43,16 @@ function Destination() {
   const [marker, setMarker] = useState<typeof data[0] | null>(null);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const prevValue = useRef<string>();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     await simulateReaquest(3000);
 
     const random = Math.abs(Math.floor(Math.random() * data.length - 1));
-    console.log(random);
     setLoading(false);
     setMarker(data[random]);
+    prevValue.current = value;
   };
 
   return (
@@ -96,7 +97,7 @@ function Destination() {
           {marker && !loading ? (
             <div className="">
               <p className="text-2xl font-medium">
-                le position de <b>{value}</b> est:{" "}
+                le position de <b>{prevValue.current}</b> est:{" "}
               </p>
               <ul>
                 <li>

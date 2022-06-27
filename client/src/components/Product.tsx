@@ -76,7 +76,7 @@ function Product() {
   //   console.log(isMounted.current);
 
   return (
-    <main className="max-w-4xl grid md:grid-cols-2 gap-2 justify-center mx-auto py-12">
+    <main className="max-w-4xl grid md:grid-cols-2 gap-2 justify-center mx-auto mt-8 py-12">
       <ImageSlider
         images={[
           "/images/Bracelet-1.jpg",
@@ -85,9 +85,6 @@ function Product() {
           "/images/Bracelet-4.jpg",
           "/images/Bracelet-5.jpg",
           "/images/Bracelet-6.jpg",
-          // "https://m.media-amazon.com/images/I/618j+XgnlNL._AC_SX569._SX._UX._SY._UY_.jpg",
-          // "https://m.media-amazon.com/images/I/618Gdd0FqoL._AC_SX569._SX._UX._SY._UY_.jpg",
-          // "https://m.media-amazon.com/images/I/61AWbT66y+L._AC_SX569._SX._UX._SY._UY_.jpg",
         ]}
       />
       <div className="space-y-6 px-3 max-w-md md:max-w-full ">

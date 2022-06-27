@@ -5,6 +5,7 @@ import {
   TruckIcon,
 } from "@heroicons/react/solid";
 import { Button, Divider, Grid } from "@mui/material";
+import React from "react";
 import Cart from "../components/Cart";
 import Description from "../components/Description";
 import Footer from "../components/Footer";
@@ -24,6 +25,7 @@ function Element({ Icon, text }: { Icon: React.ElementType; text: string }) {
 }
 
 function Buy() {
+  const Footer = React.lazy(() => import("../components/Footer"));
   return (
     <div>
       <Header />
@@ -119,7 +121,9 @@ function Buy() {
           text={"Déclaration <br /> de retour"}
         />
       </div>
-      <Footer />
+      <React.Suspense fallback={<div>Chargement...</div>}>
+        <Footer />
+      </React.Suspense>
     </div>
   );
 }
