@@ -28,7 +28,7 @@ const BannerSection: React.FunctionComponent<Props> = ({
           {title} <br /> <span className="text-3xl">{subtitle}</span>
         </h1>
         <p
-          className={`text-justify text-2xl relative transition-all duration-200 overflow-hidden h-52 before:content-[''] before:absolute 
+          className={`text-justify text-xl relative transition-all duration-200 overflow-hidden h-52 before:content-[''] before:absolute 
           before:w-full before:h-72 before:bg-gradient-to-b before:from-transparent before:to-gray-100 before:bottom-0 ${
             readMore && "before:hidden !h-auto"
           } `}
