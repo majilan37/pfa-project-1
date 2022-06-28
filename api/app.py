@@ -40,7 +40,7 @@ class ProductSchema(ma.Schema):
 productSchema = ProductSchema()
 productsSchema = ProductSchema(many=True)
 
-@app.route('/', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def get():
     return jsonify({'message': "it works"})
 
