@@ -6,4 +6,4 @@ client/node_modules
 
 .env
 
-
+/api
