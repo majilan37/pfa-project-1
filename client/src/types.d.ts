@@ -6,5 +6,14 @@ export interface FormValues {
   birthDate: string;
   phoneNumber: string;
   city: string;
-  zip: string;
+}
+
+export interface Client {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  phoneNumber: string;
+  city: string;
 }

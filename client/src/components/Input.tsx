@@ -54,7 +54,6 @@ function Input<T, C extends keyof T, K extends keyof FormValues>({
     register,
   } = useFormContext();
   const [open, setOpen] = useState(false);
-  console.log(errors);
   return (
     <div className="flex items-end space-x-2 ">
       <FormControl fullWidth>
