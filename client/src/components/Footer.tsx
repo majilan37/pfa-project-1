@@ -104,18 +104,7 @@ function Footer() {
         <div className="mx-6 py-10 text-center md:text-left">
           <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="">
-              <h6
-                className="
-            uppercase
-            font-semibold
-            mb-4
-            flex
-            items-center
-            justify-center
-            md:justify-start
-          ">
-                Logo
-              </h6>
+              <img src="/images/logo-1.png" alt="" />
             </div>
             <div className="">
               <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
@@ -165,10 +154,14 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="text-center p-6 bg-green-200">
+        <div className="text-center flex items-center justify-center space-x-3 p-6 bg-green-200">
           <span>© 2021 Copyright:</span>
           <a className="text-gray-600 font-semibold" href="/">
-            Logo
+            <img
+              className="h-8 object-contain "
+              src="/images/logo-2.png"
+              alt=""
+            />
           </a>
         </div>
       </footer>

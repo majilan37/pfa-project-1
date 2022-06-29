@@ -4,7 +4,7 @@ import { Client } from "../../types";
 const clientsApi = createApi({
   reducerPath: "clientsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/clients",
+    baseUrl: "/coordinates",
   }),
   endpoints: (builder) => ({
     getClients: builder.query<{ message: string }, void>({

@@ -4,35 +4,44 @@ import { useState, useRef } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Validator from "../components/Validator";
+import { useGetCoordinatesQuery } from "../redux/services/coordinatesApi";
 import { simulateReaquest } from "../utils";
+import { Coordinate } from "../types";
+import { toast } from "react-toastify";
 
 const data = [
   {
+    _id: 85641,
     name: "Plage d'agadir",
     latitude: 30.410753,
     longitude: -9.604345,
   },
   {
+    _id: 58521,
     name: "Agadir tassila",
     latitude: 30.384454,
     longitude: -9.523623,
   },
   {
+    _id: 78541,
     name: "Al inbiaat 3, Agadir",
     latitude: 30.395179,
     longitude: -9.548747,
   },
   {
+    _id: 98745,
     name: "Inezgane",
     latitude: 30.3523115,
     longitude: -9.5514965,
   },
   {
+    _id: 12365,
     name: "Quartier administratif",
     latitude: 30.42021,
     longitude: -9.60394,
   },
   {
+    _id: 20145,
     name: "El Massira",
     latitude: 30.40913855,
     longitude: -9.56984694998,
@@ -40,18 +49,32 @@ const data = [
 ];
 
 function Destination() {
-  const [marker, setMarker] = useState<typeof data[0] | null>(null);
+  const [marker, setMarker] = useState<Coordinate | null>(null);
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
   const prevValue = useRef<string>();
+
+  // * RTK Query hook
+  const { data: coordinates } = useGetCoordinatesQuery();
+  console.log(coordinates);
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     await simulateReaquest(3000);
 
-    const random = Math.abs(Math.floor(Math.random() * data.length - 1));
+    const selectedCoordinates = coordinates?.find(
+      (c) => String(c._id) === value
+    );
+
+    if (!selectedCoordinates) {
+      toast.error("Ya pas de braclet avec ces coordonées");
+      setLoading(false);
+      return;
+    }
+
     setLoading(false);
-    setMarker(data[random]);
+    setMarker(selectedCoordinates!);
     prevValue.current = value;
   };
 

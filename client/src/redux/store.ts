@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import clientsApi from "./services/clientsApi";
 import cart from "./slices/cartSlice";
+import clientsApi from "./services/clientsApi";
+import coordinatesApi from "./services/coordinatesApi";
 
 const store = configureStore({
   reducer: {
     cart,
     [clientsApi.reducerPath]: clientsApi.reducer,
+    [coordinatesApi.reducerPath]: coordinatesApi.reducer,
   },
 
   middleware: (defaultMiddleware) =>

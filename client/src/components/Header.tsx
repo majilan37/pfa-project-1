@@ -27,7 +27,9 @@ function Header() {
       <header className="fixed w-full top-0 px-8 py-4 bg-white z-30 shadow-md">
         <div className="max-w-6xl mx-auto flex justify-between items-center ">
           <h1 className="text-4xl">
-            <Link to="/">Logo</Link>
+            <Link to="/">
+              <img className="object-contain h-7" src="/images/logo-1.png" />
+            </Link>
           </h1>
           <ul className=" items-center hidden md:flex space-x-5 text-sm font-medium">
             <li className="hover:text-gray-700">

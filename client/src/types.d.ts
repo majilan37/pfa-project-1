@@ -17,3 +17,10 @@ export interface Client {
   phoneNumber: string;
   city: string;
 }
+
+export interface Coordinate {
+  _id: number;
+  latitude: number;
+  longitude: number;
+  name: string;
+}
