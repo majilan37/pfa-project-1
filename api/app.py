@@ -1,3 +1,4 @@
+from pickle import APPEND
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -44,6 +45,15 @@ class ClientSchema(ma.Schema):
 clientSchema = ClientSchema()
 clientsSchema = ClientSchema(many=True)
 
+
+# Coordinates Schema
+class CoordinatesSchema(ma.Schema):
+    class Meta:
+        fields = ("_id", 'name', 'longitude', 'latitude')
+    
+# Init shema 
+coordinateSchema = CoordinatesSchema(many=True)
+
 # Map Coordines
 class MapCoordinates(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -69,32 +79,45 @@ def createClient():
     
     existe = db.session.query(Client.email) is not None
     if(existe):
+        print(db.session.query(Client.email))
         return jsonify({'message': f'Un client de méme email existe déja'}), 400
     
     new_client = Client(email, firstName, lastName, age, phoneNumber, city)
     db.session.add(new_client)
     db.session.commit()
+    
     return jsonify({'message': f'Achat confirméé'}), 201
 
 @app.route('/coordinates', methods=['POST'])
 def createCoordinates():
-    _id = request['_id']
-    name = request['name']
-    longitude = request['longitude']
-    latitude = request['latitude']
+    _id = request.json['_id']
+    name = request.json['name']
+    longitude = request.json['longitude']
+    latitude = request.json['latitude']
     
-    existe = db.session.query(MapCoordinates._id) is not None
-    if(existe):
-        return jsonify({'message': f'des Cordonées de méme _id existe déja'}), 400
+    # existe = db.session.query(MapCoordinates._id) is not None
+    # print(existe)
+    # if(existe):
+    #     print(db.session.query(MapCoordinates._id))
+    #     return jsonify({'message': f'des Cordonées de méme _id existe déja'}), 400
     
     new_coordinates = MapCoordinates(_id, name, longitude, latitude)
     db.session.add(new_coordinates)
     db.session.commit()
+    
+    return jsonify(new_coordinates), 201
+
+@app.route('/coordinates', methods=['GET'])
+def getCoordinate():
+    # coordinate = MapCoordinates.query.get(_id)
+    coordinates= MapCoordinates.query.all()
+    # print(coordinate)
+    return coordinateSchema.jsonify(coordinates)
 
 @app.route('/clients', methods=['GET'])
 def getClients():
-    allProdcts = Client.query.all()
-    result = clientsSchema.dump(allProdcts)
+    allClients = Client.query.all()
+    result = clientsSchema.dump(allClients)
     return jsonify(result)
 
 # Run server
