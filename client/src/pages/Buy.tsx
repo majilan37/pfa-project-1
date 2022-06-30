@@ -104,10 +104,7 @@ function Buy() {
             render={(item) => <li className="text-sm">- {item}</li>}
           />
         </div>
-        <img
-          src="https://m.media-amazon.com/images/I/61pNSwOEi1L._AC_UX569_.jpg"
-          alt=""
-        />
+        <img src="/images/Bracelet-1.jpg" alt="" />
       </div>
       <div className="bg-green-200 flex justify-evenly py-6 my-16 flex-wrap gap-4">
         <Element
